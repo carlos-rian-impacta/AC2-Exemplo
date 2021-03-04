@@ -39,7 +39,13 @@ def numero_do_pokemon(nome):
     Observações:
     - Não se esqueça de verificar os casos onde o pokémon procurado não exista (PokemonNaoExisteException).
     """
-    raise Exception("Não implementado.")
+    if not nome:
+        raise PokemonNaoExisteException()
+    uri = f"{site_pokeapi}/api/v2/pokemon/{nome}"
+    data = api.get(uri)
+    if data.status_code != 200:
+        raise PokemonNaoExisteException()
+    return data.json()["id"]
 
 
 @cached

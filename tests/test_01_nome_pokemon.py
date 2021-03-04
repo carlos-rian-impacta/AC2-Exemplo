@@ -1,6 +1,6 @@
 import pytest
 from ac2 import nome_do_pokemon
-from dependencies.errors import PokemonNaoCadastradoException
+from dependencies.errors import PokemonNaoExisteException
 
 
 def test_error_nome_do_pokemon():
