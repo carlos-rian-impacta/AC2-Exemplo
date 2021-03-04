@@ -1,20 +1,6 @@
 import pytest
-from ac2 import (
-    nome_do_pokemon,
-    numero_do_pokemon,
-    color_of_pokemon,
-    cor_do_pokemon,
-    tipos_do_pokemon,
-    evolucao_anterior,
-    evolucoes_proximas,
-    nivel_do_pokemon,
-)
-from dependencies.errors import (
-    PokemonJaCadastradoException,
-    PokemonNaoCadastradoException,
-    PokemonNaoExisteException,
-    TreinadorNaoCadastradoException,
-)
+from ac2 import nome_do_pokemon
+from dependencies.errors import PokemonNaoCadastradoException
 
 
 def test_error_nome_do_pokemon():
