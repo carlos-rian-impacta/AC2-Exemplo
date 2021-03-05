@@ -107,7 +107,20 @@ def cor_do_pokemon(nome):
     - Faça uma invocação à função color_of_pokemon acima.
     - Não esqueça de verificar se o pokemon não existir.
     """
-    raise Exception("Não implementado!")
+    cores_em_pt = {
+        "brown": "marrom",
+        "yellow": "amarelo",
+        "blue": "azul",
+        "pink": "rosa",
+        "gray": "cinza",
+        "purple": "roxo",
+        "red": "vermelho",
+        "white": "branco",
+        "green": "verde",
+        "black": "preto",
+    }
+    pokemon_cor = color_of_pokemon(nome)
+    return cores_em_pt[pokemon_cor]
 
 
 # Questão 5
@@ -133,7 +146,36 @@ def tipos_do_pokemon(nome):
     Dica: no dict você pode criar um dict mais ou menos assim.
         types = {"dragon": "dragão", "ice": "gelo", "psychic":"psíquico" ...}
     """
-    raise Exception("Não implementado!")
+    tipos = {
+        "normal": "normal",
+        "fighting": "lutador",
+        "flying": "voador",
+        "poison": "veneno",
+        "earth": "terra",
+        "rock": "pedra",
+        "bug": "inseto",
+        "ghost": "fantasma",
+        "steel": "aço",
+        "fire": "fogo",
+        "water": "água",
+        "grass": "grama",
+        "electric": "elétrico",
+        "psychic": "psíquico",
+        "ice": "gelo",
+        "dragon": "dragão",
+        "dark": "noturno",
+        "fairy": "fada",
+    }
+    if not nome:
+        raise PokemonNaoExisteException()
+    uri = f"{site_pokeapi}/api/v2/pokemon/{nome}"
+    response = api.get(uri)
+    if response.status_code != 200:
+        raise PokemonNaoExisteException()
+
+    response_json = response.json()
+    types = [tipos[type["type"]["name"]] for type in response_json["types"]]
+    return types
 
 
 # Questão 6
@@ -148,7 +190,16 @@ def evolucao_anterior(nome):
     - Não se esqueça de verificar os casos onde o pokémon procurado não exista e retorne a exceção
     Dica: A chave onde tem a evolução é "evolves_from_species"
     """
-    raise Exception("Não implementado!")
+    if not nome:
+        raise PokemonNaoExisteException()
+    uri = f"{site_pokeapi}/api/v2/pokemon-species/{nome}"
+    response = api.get(uri)
+    if response.status_code != 200:
+        raise PokemonNaoExisteException()
+    response_json = response.json()
+    if not response_json["evolves_from_species"]:
+        return None
+    return response_json["evolves_from_species"]["name"]
 
 
 # Nova Questão 7
@@ -167,7 +218,15 @@ def movimentos_pokemon(nome, qtde_mov):
         Não se esqueça de verificar os casos onde o pokémon procurado não exista.
         Caso a quantidade seja um número negativo ou menor que zero.
     """
-    raise Exception("Não implementado!")
+    if not nome:
+        raise PokemonNaoExisteException()
+    uri = f"{site_pokeapi}/api/v2/pokemon/{nome}"
+    response = api.get(uri)
+    if response.status_code != 200:
+        raise PokemonNaoExisteException()
+    response_json = response.json()["moves"]
+    movimentos = [move["move"]["name"] for move in response_json]
+    return movimentos[:qtde_mov]
 
 
 # Questão 8
@@ -200,8 +259,25 @@ def evolucoes_proximas(nome):
      "evolution_chain" e depois fazer uma nova requisição.
       essa chave está nas species...
       O restante é por sua conta, boa sorte.
+    """
+
     # Caso queira testar sua função, altere o nome do arquivos
     # /tests/_test_08_evolucoes_proximas.py para /tests/test_08_evolucoes_proximas.py
     # Ou seja remova o underline!
-    """
-    raise Exception("Não implementado!")
+
+    if not nome:
+        raise PokemonNaoExisteException()
+    uri = f"{site_pokeapi}/api/v2/pokemon-species/{nome}"
+    pokemon = api.get(uri)
+    if pokemon.status_code != 200:
+        raise PokemonNaoExisteException()
+
+    url_evolves = pokemon.json()["evolution_chain"]["url"]
+    evolves_json = api.get(url_evolves).json()
+    if not evolves_json["chain"]["evolves_to"]:
+        return []
+    evolves_to = evolves_json["chain"]["evolves_to"][0]["evolves_to"]
+    evolves = []
+    for evolve in evolves_to:
+        evolves.append(evolve["species"]["name"])
+    return evolves
