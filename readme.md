@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 ### Explicando Organização de Projeto
 
-Nesse projeto temos duas pasta [dependencies](/dependencies) e [tests](/tests), perceba que dentro de dependencies tem alguns arquivos, em cada arquivo há um comentário explicando o que cada um faz e um link para te auxiliar em caso de dúvidas. Já na pasta tests há um arquivo chamado [tests.py](/tests/tests.py) nesse arquivo há todos os testes no qual o seu código precisa passar.
+Nesse projeto temos duas pasta [dependencies](/dependencies) e [tests](/tests), perceba que dentro de dependencies tem alguns arquivos, em cada arquivo há um comentário explicando o que cada um faz e um link para te auxiliar em caso de dúvidas. Já na pasta tests há diversos arquivos que iniciam com [test_](/tests) nesses arquivos há todos os testes no qual o seu código precisa passar.
 
 Quando você desenvolve algum software uma das preocupações é saber se o programa tem uma boa cobertura de código, isso é feito por meio de testes, ou seja, nós podemos enviar algumas informações para as funções e verificar se ela retorna o que de fato esperamos.
 
@@ -54,8 +54,9 @@ assert calculo == 10 # este teste irá passar, pois o retorno é igual a 10
 assert calculo == 11 # neste caso o código dará erro, pois calculo = 10 não é igual a 11.
 ```
 
-Dentro da pasta raiz há o arquivo que de fato vai programar. Abra o arquivo [ac2.py](ac2.py) neste arquivo você vai seguir as instruções de como deve ser criada cada função.
-Após você escrever uma função, você pode invocar ela chamando no próprio código ou executando os testes. Pois o que importa é ela passar nos testes! É por meio dos testes que eu irei verificar se seu código está ou não funcionando.
+Dentro da pasta raiz há o arquivo que de fato você vai editar/programar. Abra o arquivo [ac2.py](ac2.py) neste arquivo você vai seguir as instruções de como deve ser criada cada função.
+Após você escrever uma função, você pode invocar ela chamando no próprio código ou executando os testes. 
+Vale lembrar que os testes são a validação que seu código está correto! É por meio dos testes que eu irei verificar se seu código está ou não funcionando.
 
 ### Como executar os arquivos?
 
@@ -68,3 +69,16 @@ python ac2.py
 ```sh
 pytest tests/
 ```
+
+
+#### Dicas
+DICA: O intuito desta AC é fazer você praticar requisições http,
+manipulação de dicionarios e validações de dados. É importante você
+entender como é feito os testes antes de iniciar o desenvolvimento (acesse a pasta tests).
+Vale lembrar que a API(pokeapi) é simples e não suporta muitas requisições, então não abuse!
+Se quiser ver exemplos abra uma aba no seu navegador e cole a url, assim você consegue ver
+as chaves e estruturas, sem a necessidade de fazer varias requisições.
+
+
+Adendos: As proximas ACs serão interligadas a está, há diversos máterias/links de apoi 
+dentro dos arquivos python em dependencies.
