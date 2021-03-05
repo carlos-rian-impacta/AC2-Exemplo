@@ -107,7 +107,6 @@ def cor_do_pokemon(nome):
     - Faça uma invocação à função color_of_pokemon acima.
     - Não esqueça de verificar se o pokemon não existir.
     """
-    print()
     raise Exception("Não implementado!")
 
 
