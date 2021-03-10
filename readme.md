@@ -7,7 +7,7 @@ Nesta primeira parte nós iremos fazer alguns exercicios que serão para pratica
 
 ### Configurando meu ambiente
 
-1 - Entre na pasta [AC](AC/).
+1 - Entre na pasta [AC](.).
 
 2 - Crie um ambiente virtual, usando o comando abaixo.
 ```sh
