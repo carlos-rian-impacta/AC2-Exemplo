@@ -6,9 +6,9 @@ As funções são criadas para serem usadas diretamenta,
 já os métodos só podem ser usados quando a classe é instânciada(criada).
 
 Nas classe nós podemos receber diversos parâmetros assim como na funções.
-Para isso a gente especifica esse parâmetros no métodos "especial" __init__.
+Para isso a gente especifica estes parâmetros no método "especial" __init__.
 
-Esse método é o método que inicia a classe. Onde o primeiro param você não precisa informar.
+Este método é responsável por iniciar a classe. Onde o primeiro param você não precisa informar.
 Por convenção, o self é um parâmetro default da classe, ou seja o self quer dizer que é a própria instância da classe.
 
 Confuso né?
@@ -25,14 +25,14 @@ class Pessoa:
    
     # Vamos criar um método que retorna o nome de uma pessoa.
     # Veja que a gente só passa o argumento self no método.
-    # Por quê? porque no init a gente já pegou o valor de nome colocou dentro do self. 
+    # Por quê? porque no __init__ a nós já pegamos o valor de nome e colocamos o mesmo dentro do self.nome. 
     def pegar_nome(self):
-        # então a gente consegue retornar assim
+        # então podemos retornar desta forma.
         return self.nome
 
 # Para testar
-# cria uma variável que vai instânciar(criar) a classe
-pessoa = Pessoa("Carlos", 60)
+# crie uma variável que vai instânciar(criar) a classe
+pessoa = Pessoa("João", 60)
 # pegue o nome da pessoa
 print(pessoa.pegar_nome())
 

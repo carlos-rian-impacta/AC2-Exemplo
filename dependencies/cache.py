@@ -7,7 +7,7 @@ Se a entrada é a mesma.
 
 Por exemplo: Imagine que eu tenho uma função que recebe sempre um parâmetro.
 
-# se a gente mandar chamar essa função 10 vezes como o mesmo valor, você concorda
+# se a gente mandar chamar essa função 10 vezes com o mesmo valor, você concorda
 # que a resposta é a mesma? tipo se eu passar 10 então eu recebo 11.
 def adicione_mais_1(numero):
     return numero + 1
